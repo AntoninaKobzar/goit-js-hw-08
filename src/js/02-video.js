@@ -17,9 +17,10 @@ const currentTime = function (data) {
     let time = Number(localStorage.getItem("videoplayer-current-time"));
     console.log(time);
 }
-const updatedTime=player.on("timeupdate", throttle(currentTime, 1000));
+// const updatedTime = player.on("timeupdate", throttle(currentTime, 1000));
+player.on("timeupdate", throttle(currentTime, 1000));
 
-player.setCurrentTime(updatedTime).then(function(seconds) {
+player.setCurrentTime(time).then(function(seconds) {
     
 }).catch(function(error) {
     switch (error.name) {
