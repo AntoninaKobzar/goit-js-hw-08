@@ -1,4 +1,7 @@
-    galleryEl.insertAdjacentHTML("beforeend",cardsMarkup);
+
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";   
+galleryEl.insertAdjacentHTML("beforeend", cardsMarkup);
 
             function createGalleryCardsMarkup(gallery) {
             return gallery.map(({preview,original,description}) => {
