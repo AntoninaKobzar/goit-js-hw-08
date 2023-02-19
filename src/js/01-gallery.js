@@ -1,7 +1,10 @@
 
 import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";   
-galleryEl.insertAdjacentHTML("beforeend", cardsMarkup);
+import "simplelightbox/dist/simple-lightbox.min.css";
+
+        const galleryEl=document.querySelector(".gallery");
+        const cardsMarkup=createGalleryCardsMarkup(galleryItems);
+        galleryEl.insertAdjacentHTML("beforeend", cardsMarkup);
 
             function createGalleryCardsMarkup(gallery) {
             return gallery.map(({preview,original,description}) => {
