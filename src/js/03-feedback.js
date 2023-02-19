@@ -1,38 +1,43 @@
 import throttle from "lodash.throttle";
-const refs = {
-    form: document.querySelector("feedback-form"),
-    email: document.querySelector("feedback-form input"),
-    textarea:document.querySelector("feedback-form textarea"),
-}
 
-populateForm();
-const formData = {};
+
 const STORAGE_KEY = "feedback-form-state";
-refs.form.addEventListener("submit", onFormSubmit);
-refs.email.addEventListener("input", onInput);
-refs.textarea.addEventListener("input", throttle(onTextarea, 500));
+const form = document.querySelector("feedback-form");
+const input = document.querySelector("feedback-form input");
+const textarea = document.querySelector("feedback-form textarea");
+// const parsedData = localStorage.getItem(STORAGE_KEY, JSON.parse(formData));
 
+const formData = {};
+populateForm();
+form.addEventListener("input", throttle(onInput, 500));
+form.addEventListener("submit", onFormSubmit);
 
 
 function onInput(e) {
-    formData[e.target.name] = e.target.value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+    
+    formData[e.target.name] = e.currentTarget.value;
+    return localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
-function onTextarea(e) {
-    formData[e.target.name] = e.target.value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-}
+
 function onFormSubmit(e) {
     evt.preventDefault();
-    const savedData = localStorage.getItem(STORAGE_KEY, JSON.stringify(formData));
-    const parsedData = localStorage.getItem(STORAGE_KEY, JSON.parse(savedData));
-    console.log(parsedData);
-
-
-    evt.currentTarget.reset();
+    
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY))) 
+    e.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     console.log(formData);
 }
+function populateForm() {
+    const parsedData = localStorage.getItem(STORAGE_KEY, JSON.parse(formData));
+    if (parsedData) {
+        formKeys = Object.keys(parsedData);
+        return formKeys.map(element => {
+            document.querySelector(`[name='${element}']`).value = parsedData[element]
+        })
+    }
+}
+
+    
 
 
 
