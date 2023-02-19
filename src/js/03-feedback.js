@@ -5,14 +5,14 @@ const refs = {
     textarea:document.querySelector("feedback-form textarea"),
 }
 
+populateForm();
+const formData = {};
+const STORAGE_KEY = "feedback-form-state";
 refs.form.addEventListener("submit", onFormSubmit);
 refs.email.addEventListener("input", onInput);
 refs.textarea.addEventListener("input", throttle(onTextarea, 500));
 
-const formData = {};
-const STORAGE_KEY = "feedback-form-state";
 
-populateForm();
 
 function onInput(e) {
     formData[e.target.name] = e.target.value;
