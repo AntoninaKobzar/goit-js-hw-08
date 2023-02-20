@@ -40,7 +40,7 @@ function populateTextarea() {
         formKeys = Object.keys(savedMessageObject);
         formKeys.map(element => {
         document.querySelector(`[name='${element}']`).value = savedMessageObject[element];
-            
+            console.log(savedMessageObject[element]);
         })
     }
 }
