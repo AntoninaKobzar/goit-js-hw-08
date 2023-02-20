@@ -9,6 +9,7 @@ const refs = {
 };
 
 
+populateTextarea();
 refs.form.addEventListener("submit", onFormSubmit);
 refs.textarea.addEventListener("input", throttle(onTextareaInput, 500));
 
@@ -18,7 +19,6 @@ refs.form.addEventListener("input", e => {
     console.log(formData);
 });
 
-populateTextarea();
 
 function onTextareaInput(evt) {
     const message = evt.target.value;
