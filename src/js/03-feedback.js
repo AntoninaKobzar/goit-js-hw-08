@@ -35,7 +35,7 @@ function onFormSubmit(evt) {
 
 function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
-    console.log(JSON.parse(savedMessage));
+    console.log(savedMessage);
 }
 
 
