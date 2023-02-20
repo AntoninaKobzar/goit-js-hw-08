@@ -41,8 +41,8 @@ function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY,JSON.parse(formData));
     if (load(STORAGE_KEY)) {
         const outputForm = load(STORAGE_KEY);
-        const formKeys = formKeys.map(element => document.querySelector(`[name=${element}]`).value = outputForm[element]);
-        refs.textarea.value = savedMessage;
+        const formKeys = formKeys.map(element => document.querySelector(`[name="${element}"]`).value = outputForm[element]);
+        // refs.textarea.value = savedMessage;
     }
 }
    
