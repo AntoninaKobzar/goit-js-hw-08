@@ -35,7 +35,23 @@ function onFormSubmit(evt) {
 
 function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
-    console.log(STORAGE_KEY);
+    console.log(JSON.parse(savedMessage));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // newData = JSON.parse(savedMessage);
     // if (savedMessage) {
     //     formKeys = Object.keys(newData);
@@ -43,7 +59,7 @@ function populateTextarea() {
     //         document.querySelector(`[name='${element}']`).value = newData[element]
     //     })
     // }
-};
+// };
 
 
 
