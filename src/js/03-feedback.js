@@ -31,9 +31,17 @@ function onFormSubmit(evt) {
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 }
+// function populateTextarea() {
+//     const savedMessage = localStorage.getItem(STORAGE_KEY,JSON.parse(formData));
+//     if (savedMessage) {
+//         refs.textarea.value = savedMessage;
+//     }
+// }
 function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY,JSON.parse(formData));
-    if (savedMessage) {
+    if (load(STORAGE_KEY)) {
+        const outputForm = load(STORAGE_KEY);
+        const formKeys = formKeys.map(element => document.querySelector(`[name=${element}]`).value = outputForm[element]);
         refs.textarea.value = savedMessage;
     }
 }
