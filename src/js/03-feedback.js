@@ -35,16 +35,14 @@ function onFormSubmit(evt) {
 
 function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
-    console.log(savedMessage);
+    newData = JSON.parse(savedMessage);
     if (savedMessage) {
-        const savedMessageObject = JSON.parse(savedMessage);
-        console.log(savedMessageObject.email);
-        const email = document.querySelector("input");
-        email.value = savedMessageObject.email;
-        const textarea = document.querySelector("textarea");
-        textarea.value = savedMessageObject.message;
+        formKeys = Object.keys(newData);
+        formKeys.map(element => {
+            document.querySelector(`[name='${element}']`).value = newData[element]
+        })
     }
-    }
+};
 
 
 
